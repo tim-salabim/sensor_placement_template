@@ -23,49 +23,11 @@ ndvi = function(x) {
   return(out)
 }
 
-
-ndwi = function(x) {
-  out = (x["B08"] - x["B12"]) / (x["B08"] + x["B12"])
-  names(out) = "ndwi"
-  return(out)
-}
-
-nsds = function(x) {
-  out = (x["B11"] - x["B12"]) / (x["B11"] + x["B12"])
-  names(out) = "nsds"
-  return(out)
-}
-
-ndmi = function(x) {
-  out = (x["B8A"] - x["B11"]) / (x["B8A"] + x["B11"])
-  names(out) = "ndmi"
-  return(out)
-}
-
-msi = function(x) {
-  out = 
-    x["B11"] / x["B08"]
-  names(out) = "msi"
-  return(out)
-}
-
 ndvi_stack = rast(lapply(rst_lst, ndvi))
-ndwi_stack = rast(lapply(rst_lst, ndwi))
-nsds_stack = rast(lapply(rst_lst, nsds))
-ndmi_stack = rast(lapply(rst_lst, ndmi))
-msi_stack = rast(lapply(rst_lst, msi))
 
 lst = list(
-  # ndvi_mean = mean(ndvi_stack)
-  # , ndvi_var = app(ndvi_stack, "var")
-  # , ndwi_mean = mean(ndwi_stack)
-  # , ndwi_var = app(ndwi_stack, "var")
-  nsds_mean = mean(nsds_stack)
-  , nsds_var = app(nsds_stack, "var")
-  , msi_mean = mean(msi_stack)
-  , msi_var = app(msi_stack, "var")
-  # , ndmi_mean = mean(ndmi_stack)
-  # , ndmi_var = app(ndmi_stack, "var")
+  ndvi_mean = mean(ndvi_stack)
+  , ndvi_var = app(ndvi_stack, "var")
 )
 
 mapview(lst$msi_mean)
