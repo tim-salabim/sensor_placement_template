@@ -1,0 +1,1 @@
+# sensor_placement_template
