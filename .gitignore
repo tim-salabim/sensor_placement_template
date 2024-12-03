@@ -47,3 +47,9 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# field boundary file (and potentially folder)
+field_boundary
+
+# sentinel stacks folder
+sentine_stacks/
