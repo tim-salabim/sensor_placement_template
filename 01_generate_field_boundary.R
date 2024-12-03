@@ -5,4 +5,8 @@ library(sf)
 fb = drawFeatures()
 mapview(fb)
 
-st_write(fb, "field_boundary.gpkg")
+if (!dir.exists("field_boundary")) {
+  dir.create("field_boundary")
+}
+
+st_write(fb, "field_boundary/field_boundary.gpkg")
